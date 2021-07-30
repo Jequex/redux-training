@@ -1,14 +1,18 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import Task from './Task';
+import PropTypes from 'prop-types';
+import { get_tasks } from '../redux/actions';
 
-const TaskList = () => {
+const TaskList = ({ tasks }) => {
 
-    const lists = [1, 2, 3, 4];
+    // const lists = [1, 2, 3, 4];
+    get_tasks();
 
     return (
         <div className="Tasks">
             {
-                lists.map((num) => 
+                tasks.map((num) => 
                     <Task key={ num }/>
                 )
             }
@@ -16,4 +20,10 @@ const TaskList = () => {
     )
 }
 
-export default TaskList;
+TaskList.propTypes = {tasks: PropTypes.array.isRequired,}
+
+const mapStateToProps = state => ({
+    tasks: state.task
+});
+
+export default connect(mapStateToProps, {get_tasks})(TaskList);
