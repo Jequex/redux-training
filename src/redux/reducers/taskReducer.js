@@ -1,6 +1,8 @@
 import { ADD_TASK, DELETE_TASK, GET_TASKS } from '../constants';
 
-const taskState = [];
+const taskState = {
+    tasks: []
+};
 
 const taskReducer = (state = taskState, action) => {
     switch (action.type) {

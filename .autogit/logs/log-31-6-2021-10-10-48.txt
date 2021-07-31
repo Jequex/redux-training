@@ -1,0 +1,17 @@
+-------------------- Auto-Git Log --------------------
+		Sat Jul 31 2021 10:10:48 GMT+0100 (West Africa Standard Time)
+------------------------------------------------------
+
+Modified files:
+* package-lock.json
+* package.json
+* src/redux/store.js
+
+
+Created files:
+
+
+Deleted files:
+
+
+Renamed files:

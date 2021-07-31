@@ -17,6 +17,7 @@ export const get_tasks = () => async dispatch => {
 
         const res = await fetch("/tasks");
         const data = await res.json();
+        console.log(data);
 
         dispatch( {
             type: GET_TASKS,

@@ -1,13 +1,21 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { connect } from 'react-redux';
 import Task from './Task';
 import PropTypes from 'prop-types';
 import { get_tasks } from '../redux/actions';
 
-const TaskList = ({ tasks }) => {
+const TaskList = ({ tasks: { tasks } }) => {
+    useEffect(() => {
+        get_tasks();
+    }, []);
 
     // const lists = [1, 2, 3, 4];
-    get_tasks();
+    // console.log(get_tasks());
+
+    const get_tasks = async () => {
+        const res = await fetch("/tasks");
+
+    }
 
     return (
         <div className="Tasks">
