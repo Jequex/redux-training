@@ -17,7 +17,7 @@ const TaskList = ({ tasks: { tasks }, get_tasks }) => {
         <div className="Tasks">
             {
                 tasks.map((num) => 
-                    <Task key={num} tasky={ num.task }/>
+                    <Task key={num} />
                 )
             }
         </div>
