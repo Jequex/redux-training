@@ -8,33 +8,34 @@ const TaskList = ({ tasks, loading, get_tasks, set_loading }) => {
     useEffect(() => {
         set_loading();
         get_tasks();
+        //eslint-disable-next-line
     }, []);
 
-    if (loading || tasks === null) {
+    if (loading || tasks === undefined) {
         return (
             <div className="">Loading....</div>
         )
+    } else {
+        return (
+            <div>
+                {
+                    tasks.map((task) => {
+                        return (
+                            <div>{task.task}</div>
+                        )
+                    })
+                }
+            </div>
+    );
     }
 
-    console.log(tasks)
-
-    return (
-        <div>
-            {
-                tasks.tasks.map((a) => {
-                    return (
-                        <div>a</div>
-                    )
-                })
-            }
-        </div>
-    );
+    
 }
 
-TaskList.propTypes = {tasks: PropTypes.array.isRequired,}
+TaskList.propTypes = {tasks: PropTypes.array}
 
 const mapStateToProps = state => ({
-    tasks: state.task,
+    tasks: state.task.tasks,
     loading: state.task.state.loading
 });
 
