@@ -4,24 +4,20 @@ import Task from './Task';
 import PropTypes from 'prop-types';
 import { get_tasks } from '../redux/actions';
 
-const TaskList = ({ tasks: { tasks } }) => {
+const TaskList = ({ tasks: { tasks }, get_tasks }) => {
     useEffect(() => {
         get_tasks();
     }, []);
 
-    // const lists = [1, 2, 3, 4];
-    // console.log(get_tasks());
-
-    const get_tasks = async () => {
-        const res = await fetch("/tasks");
-
+    if (tasks === []) {
+        return;
     }
 
     return (
         <div className="Tasks">
             {
                 tasks.map((num) => 
-                    <Task key={ num }/>
+                    <Task key={num} tasky={ num.task }/>
                 )
             }
         </div>

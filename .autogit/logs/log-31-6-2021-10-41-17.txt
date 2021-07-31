@@ -1,0 +1,21 @@
+-------------------- Auto-Git Log --------------------
+		Sat Jul 31 2021 10:41:17 GMT+0100 (West Africa Standard Time)
+------------------------------------------------------
+
+Modified files:
+* package-lock.json
+* package.json
+* src/components/TaskList.js
+* src/redux/actions.js
+* src/redux/reducers/taskReducer.js
+* src/redux/store.js
+
+
+Created files:
+* .autogit/logs/log-31-6-2021-10-10-48.txt
+
+
+Deleted files:
+
+
+Renamed files:
