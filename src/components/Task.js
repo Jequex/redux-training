@@ -1,11 +1,11 @@
 import React from 'react';
 
-const Task = ({task}) => {
+const Task = () => {
     return (
         <div className="taask">
-            {
+            
                 task
-            }
+            
         </div>
     )
 }

@@ -1,4 +1,4 @@
-import { ADD_TASK, DELETE_TASK, GET_TASKS, NEW_USER } from './constants';
+import { ADD_TASK, DELETE_TASK, GET_TASKS, NEW_USER, LOADING } from './constants';
 
 export const add_task = () => {
     return {
@@ -12,12 +12,17 @@ export const delete_task = () => {
     };
 };
 
+export const set_loading = () => {
+    return {
+        type: LOADING
+    }
+}
+
 export const get_tasks = () => async dispatch => {
     try {
 
         const res = await fetch("/tasks");
         const data = await res.json();
-        console.log(data);
 
         dispatch( {
             type: GET_TASKS,

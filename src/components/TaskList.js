@@ -1,33 +1,31 @@
-import React, {useEffect} from 'react';
+import React, {Fragment, useEffect} from 'react';
 import { connect } from 'react-redux';
 import Task from './Task';
 import PropTypes from 'prop-types';
 import { get_tasks } from '../redux/actions';
 
-const TaskList = ({ tasks: { tasks }, get_tasks }) => {
+const TaskList = ({ tasks, get_tasks }) => {
     useEffect(() => {
         get_tasks();
-    }, []);
-
-    if (tasks === []) {
-        return;
-    }
+    }, [get_tasks]);
 
     return (
-        <div className="Tasks">
+        <Fragment>
             {
-                tasks.map((num) => 
-                    <Task key={num} />
-                )
+                tasks.map(a => {
+                    return (
+                        <p>a</p>
+                    )
+                })
             }
-        </div>
-    )
+        </Fragment>
+    );
 }
 
 TaskList.propTypes = {tasks: PropTypes.array.isRequired,}
 
 const mapStateToProps = state => ({
-    tasks: state.task
+    tasks: state.task.state.tasks
 });
 
 export default connect(mapStateToProps, {get_tasks})(TaskList);
