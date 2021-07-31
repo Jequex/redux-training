@@ -1,15 +1,22 @@
-import { ADD_TASK, DELETE_TASK, GET_TASKS } from '../constants';
+import { ADD_TASK, DELETE_TASK, GET_TASKS, LOADING } from '../constants';
 
 const taskState = {
-    tasks: []
+    tasks: null,
+    loading: false
 };
 
 const taskReducer = (state = taskState, action) => {
     switch (action.type) {
+        case LOADING:
+            return {
+                ...state,
+                loading: true
+            };
         case GET_TASKS:
             return {
                 ...state,
-                tasks: action.payload
+                tasks: action.payload,
+                loading: false
             };
         case ADD_TASK:
             return {

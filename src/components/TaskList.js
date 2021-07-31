@@ -1,31 +1,41 @@
-import React, {Fragment, useEffect} from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import Task from './Task';
+// import Task from './Task';
 import PropTypes from 'prop-types';
-import { get_tasks } from '../redux/actions';
+import { get_tasks, set_loading } from '../redux/actions';
 
-const TaskList = ({ tasks, get_tasks }) => {
+const TaskList = ({ tasks, loading, get_tasks, set_loading }) => {
     useEffect(() => {
+        set_loading();
         get_tasks();
-    }, [get_tasks]);
+    }, []);
+
+    if (loading || tasks === null) {
+        return (
+            <div className="">Loading....</div>
+        )
+    }
+
+    console.log(tasks)
 
     return (
-        <Fragment>
+        <div>
             {
-                tasks.map(a => {
+                tasks.tasks.map((a) => {
                     return (
-                        <p>a</p>
+                        <div>a</div>
                     )
                 })
             }
-        </Fragment>
+        </div>
     );
 }
 
 TaskList.propTypes = {tasks: PropTypes.array.isRequired,}
 
 const mapStateToProps = state => ({
-    tasks: state.task.state.tasks
+    tasks: state.task,
+    loading: state.task.state.loading
 });
 
-export default connect(mapStateToProps, {get_tasks})(TaskList);
+export default connect(mapStateToProps, {get_tasks, set_loading})(TaskList);
