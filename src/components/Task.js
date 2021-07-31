@@ -1,10 +1,10 @@
 import React from 'react';
 
-const Task = () => {
+const Task = ({tasky}) => {
     return (
         <div className="taask">
             
-                task
+            {tasky.task}
             
         </div>
     )
